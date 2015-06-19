@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>STATS ADJUST WIDTHS Extension Command</title>
+
+<link rel="stylesheet" type="text/css" href="extsyntax.css" />
+
+
+
+
+
+</head>
+
+<body>
+<h1>STATS ADJUST WIDTHS Extension Command</h1>
+
+<p>Adjust the widths of string variables across datasets to be the same
+for convenience in merging and similar operations</p>
+<div class="syntax">
+<p>STATS ADJUST WIDTHS 
+VARIABLES=<em>variables</em><sup>&#42;</sup><br/>
+WIDTH=MAX<sup>&#42;&#42;</sup> or MIN or FIRST<br/>
+MAXWIDTH=<em>integer</em><br/>
+DSNAMEROOT=<em>rootname</em><br/>
+EXACTWIDTH=<em>integer</em></p>
+
+<p>/FILES <em>list of file names and wilcards and dataset names</em><sup>&#42;</sup></p>
+
+<p>/OUTFILE RESAVE=NO<sup>&#42;&#42;</sup> or YES<br/>
+SUFFIX=&ldquo;<em>string</em>&rdquo;<br/>
+DIRECTORY=&ldquo;<em>directory</em>&rdquo;<br/>
+OVERWRITE=NO<sup>&#42;&#42;</sup> or YES<br/>
+CLOSE=NO<sup>&#42;&#42;</sup> or YES</p>
+
+<p>/HELP</p>
+
+<p><sup>&#42;</sup> Required<br/>
+<sup>&#42;&#42;</sup> Default</p>
+</div>
+<p>/HELP displays this help and does nothing else.</p>
+
+
+<pre class="example"><code>STATS ADJUST WIDTHS 
+VARIABLES = string1 string2 DSNAMEROOT=ds_ WIDTH=MAX
+/FILES=ds1 &quot;c:/data/mydata.sav&quot;
+/OUTFILE RESAVE=YES SUFFIX=&quot;_adj&quot; OVERWRITE=YES
+CLOSE=NO.
+</code></pre>
+
+<p><strong>VARIABLES</strong> lists one or more string variables whose widths will be made the
+same for each variable across the files.  Each variable must exist in at least
+one of the files.  If there is a numeric/string type mismatch, it is reported.
+VARIABLES=ALL can be used to select all string variables.</p>
+
+<p><strong>WIDTH</strong> specifies how the widths should be adjusted.  Each variable&#39;s width is made
+the same across the files in which it exists.  For MAX, the width will be the
+largest found.  For MIN, it will be the smallest.  For FIRST, it will be the
+width found in the first file.  In that case, the variables must all exist in
+the first file.  Reducing the widths can, of course, result in loss of data.</p>
+
+<p><strong>MAXWIDTH</strong> can be specified to limit the calculated width.</p>
+
+<p><strong>EXACTWIDTH</strong> can be specified to set all the variables to the same width.
+If used, WIDTH is ignored, and MAXWIDTH cannot be specified.</p>
+
+<p>If there is only one file/dataset to process, only MAXWIDTH or EXACTSIZE
+can cause any string widths to change.</p>
+
+<p>Files that are opened must be assigned a dataset name by this procedure.</p>
+
+<p><strong>DSNAMEROOT</strong>, which defaults to <em>adjust_</em> is used as the prefix for each name, 
+and the remainder of the name is a sequential number.  Inputs specified as 
+dataset names are not affected.  If the generated dataset name is already 
+in use, it is reassigned to this list, and the previous owner of the dataset 
+name will, therefore, be closed.</p>
+
+<h2>FILES</h2>
+
+<p>The FILES subcommand lists the datasets or file specifications to modify.
+The list can contain file names, file name wildcards such as <code>&quot;c:/data/x*.sav&quot;</code>,
+and dataset names that are assigned to data.  However, <code>*</code> is interpreted
+as a reference to the active dataset, not as a wildcard.</p>
+
+<p>If a file that is listed in a file specification is already open, it will be reopened, and
+given a new dataset name, and any previous unsaved changes will be lost.
+Datasets, of course, are not reopened.  A dataset name that is only declared,
+of course, will not work.</p>
+
+<h2>OUTFILE</h2>
+
+<p>By default, all the files are left open.  The OUTFILE subcommand allows for
+different behavior.
+<strong>RESAVE</strong> specifies whether a file that was opened is resaved to disk.
+Datasets in the input list are only saved if <strong>DIRECTORY</strong> is used.  In
+that case, the dataset name with an <em>sav</em> extension becomes the file name.</p>
+
+<p><strong>SUFFIX</strong> optionally specifies a suffix to be added to the file name root for the
+saved file.  For example, a file opened as data.sav would be saved as
+<code>data_adjusted</code> if <code>SUFFIX=&quot;_adjusted&quot;</code>.</p>
+
+<p>By default, files are saved to the input directory.  <strong>DIRECTORY</strong> specifies
+an alternative location for the saved files.  The directory will be created
+if it does not exist, but the path up to the last portion must already exist.</p>
+
+<p><strong>OVERWRITE</strong> specifies whether the save tries to overwrite an existing file.
+By default, files are not overwritten.</p>
+
+<p><strong>CLOSE</strong> specifies whether to close any file that was opened.  Using RESAVE=NO
+with CLOSE=YES is not very useful.  The active dataset, if included, is not closed.
+Note: If the number of files to process is large, it may be necessary to 
+specify CLOSE=YES in order to avoid having an excessive number of files
+open with possible resource exhaustion.</p>
+
+<p>After the width adjustments, the
+active dataset will be the last file that was processed.  Only files or datasets
+that are modified are resaved.</p>
+
+<p>The active file must have a dataset name in order to run this command.</p>
+
+<p>&copy; Copyright IBM Corp. 1989, 2014</p>
+
+</body>
+
+</html>
+
