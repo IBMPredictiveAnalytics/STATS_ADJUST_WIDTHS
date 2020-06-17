@@ -2,15 +2,16 @@ Name: STATS ADJUST WIDTHS
 Dialog-Specs: STATS_ADJUST_WIDTHS.spd
 Command-Specs: STATS_ADJUST_WIDTHS.xml
 Code-Files: STATS_ADJUST_WIDTHS.py
-Misc-Files: markdown.html,extsyntax.css,IBMdialogicon.png
+Misc-Files: extsyntax.css,IBMdialogicon.png,markdown.html
 Summary: Adjust widths of string variables across files
 Description: This command synchronizes the widths of selected string v
  ariables across a set of files or datasets. This is mainly useful whe
  n combining files with MATCH  or ADD.
 Author: JKP, IBM
-Version: 1.1.5
-Product-Version: 18
+Version: 2.0.0
+Product-Version: 24
 Date: 1/28/2013
 Categories: utility
 Plugins: Python
+Python-Version: 3
 Translation-Catalogues: lang

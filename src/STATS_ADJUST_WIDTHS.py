@@ -3,13 +3,13 @@
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 1989, 2014
+# * (C) Copyright IBM Corp. 1989, 2020
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
 # * restricted by GSA ADP Schedule Contract with IBM Corp. 
 # ************************************************************************/
 
-from __future__ import with_statement
+
 
 """STATS ADJUST WIDTHS extension command"""
 
@@ -290,7 +290,7 @@ class VariablesManager(object):
                 for v in vardict.variables if vardict[v].VariableType != 0])
             self.files[dsname] = varprop
             #self.varsfound.update(vardict.variables)
-            self.varsfound.update(varprop.keys())
+            self.varsfound.update(list(varprop.keys()))
             typemismatchsn = self.allnumerics.intersection(set(varprop.keys()))
             numerics = set([vardict[v].VariableName.lower() for v in vardict.variables\
                 if vardict[v].VariableType == 0])
@@ -320,7 +320,7 @@ class VariablesManager(object):
                     #for v in self.variables:
                     for v in self.varsfound:
                         vl = v.lower()
-                        calc = func([vw[vl] for vw in self.files.values() if vl in vw])
+                        calc = func([vw[vl] for vw in list(self.files.values()) if vl in vw])
                         if self.maxwidth:
                             calc = min(calc, self.maxwidth)
                         self.calcwidths[vl] = calc
@@ -337,7 +337,7 @@ class ApplyWidths(object):
     def processdataset(self, ds):
         
         alterations = []
-        for v, vw in self.widths.files[ds].items():
+        for v, vw in list(self.widths.files[ds].items()):
             vl = v.lower()
             try:
                 if vw != self.widths.calcwidths[vl]:
@@ -383,7 +383,7 @@ DATASET NAME %s.""" % (self.dataset.dsmap[ds], ds))
             base = ds + os.path.extsep + "sav"
             target = os.path.join(self.directory, base)
         if not self.overwrite and os.path.exists(target):
-            print _("""File %s already exists and will not be overwritten.""") % target
+            print(_("""File %s already exists and will not be overwritten.""") % target)
         else:
             # this is already the active file
             spss.Submit("""SAVE OUTFILE="%(target)s".""" % locals())
@@ -397,7 +397,7 @@ DATASET NAME %s.""" % (self.dataset.dsmap[ds], ds))
 def Run(args):
     """Execute the STATS AJUST WIDTHS extension command"""
 
-    args = args[args.keys()[0]]
+    args = args[list(args.keys())[0]]
     # debugging
     # makes debug apply only to the current thread
     #try:
@@ -435,7 +435,7 @@ def Run(args):
         def _(msg):
             return msg
     # A HELP subcommand overrides all else
-    if args.has_key("HELP"):
+    if "HELP" in args:
         #print helptext
         helper()
     else:
@@ -455,7 +455,7 @@ def helper():
     # webbrowser.open seems not to work well
     browser = webbrowser.get()
     if not browser.open_new(helpspec):
-        print("Help file not found:" + helpspec)  
+        print(("Help file not found:" + helpspec))  
 try:    #override
     from extension import helper
 except:
@@ -522,7 +522,7 @@ class NonProcPivotTable(object):
 def attributesFromDict(d):
     """build self attributes from a dictionary d."""
     self = d.pop('self')
-    for name, value in d.iteritems():
+    for name, value in d.items():
         setattr(self, name, value)
 
 def StartProcedure(procname, omsid):
