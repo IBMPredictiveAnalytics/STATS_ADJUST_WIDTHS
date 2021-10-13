@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>調整變數寬度</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>跨檔案調整字串變數的寬度</h1>
+<p>
+合併包含字串變數的檔案時，相符的變數必須具有相同的寬度。此程序會跨一組檔案或資料集同步處理寬度。
+</p>
+<p>此對話框會處理作用中的檔案以及一個外部檔案。使用語法，您可以一次處理許多檔案。</p>
+
+<p class="step"><span class="step-glyph">►</span>若要執行此程序，請從功能表選擇：</p>
+<p class="menuselection">&nbsp;資料<br>&nbsp;&nbsp;資料 > 調整變數寬度...</p>
+
+<p><span class="runinhead">要同步化的檔案</span> 選取要使用作用中檔案來同步化的檔案。</p>
+<p class="bullet">&bull; 如果檔案已開啟，它將重新開啟，且任何未儲存的變更將會遺失。
+<p class="bullet">&bull; 作用中的檔案必須具有資料集名稱，以執行此指令。
+<p><span class="runinhead">要調整的變數</span> 選取應調整其寬度的（字串）變數</p>
+<p class="bullet">&bull; 選取的變數無需出現在每個檔案中。
+<p><span class="runinhead">大小調整規則</span> 選擇調整寬度的方式。每一個變數都要個別地進行調整。對於上限，變數寬度將調整為變數的最寬實例等。
+如果您選擇「第一個」，目標寬度將是作用中資料集中變數的寬度。
+<p class="bullet">&bull; 如果產生的欄位太小，無法保存所有的值，這些值將被截斷。
+
+<p><span class="runinhead">大小上限</span> 大小規則受這個指定的上限限制。
+<p><span class="runinhead">資料集名稱的字首</span> 開啟檔案時，會對其指派一個由字首及循序整數組成的資料集名稱。
+<p class="bullet">&bull; 如果該資料集名稱已在使用中，它會重新指派給此檔案，且其他資料集會關閉。之前未儲存的變更會遺失。
+<p>ALTER TYPE 指令用於進行變更。在該指令的輸出中，會報告受影響的變數。
+
+<h2>儲存(V)</h2>
+依預設，修改過的檔案會保持開啟，不會儲存。為方便起見，「儲存」子對話框會提供儲存功能。</p>
+
+<p><span class="runinhead">重新儲存已進行修改調整的檔案</span> 勾選此方框可儲存處理的檔案。</p>
+<p class="bullet">&bull; 不會儲存作用中的資料集，除非在下面指定了目錄。</p>
+<p class="bullet">&bull; 如果尚未修改檔案，則不會重新儲存。</p>
+<p><span class="runinhead">改寫現有檔案</span> 勾選此方框可使用變更的版本改寫現有檔案。</p>
+<p><span class="runinhead">附加字尾至檔名根部</span>
+儲存檔案時，可以將字尾附加至檔名的根部。
+例如，指定 _adjusted 可能會產生檔名 mydata_adjusted.sav</p>
+<p><span class="runinhead">儲存之後關閉檔案</span> 勾選此方框可在處理檔案之後自動關閉檔案。如果尚未儲存檔案，這會起反作用，但永不關閉作用中的檔案。
+<p><span class="runinhead">將檔案寫入目錄</span> 選取應將檔案寫入其中的目錄。如果未指定任何目錄，檔案會儲存在原始位置中。
+<p class="bullet">&bull; 作用中的檔案未儲存至磁碟，除非指定了目錄。
+儲存檔案時，名稱格式為 dsname.sav，其中 dsname 是資料集名稱。未附加字尾。
+
+<h2>其他特性</h2>
+<p>
+使用語法，您可以處理兩個以上的輸入檔或資料集，且不需要併入作用中的檔案。此指令還可以僅處理單一檔案。
+<p>如果指定目錄，且最後一個層次不存在，此指令將建立它。
+<p>執行
+<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+以顯示完整語法。
+</p>
+<p>附註：此指令的原始版本將重新儲存檔案，即使尚未修改檔案亦是如此。有時為方便起見，在更好地處理大量檔案時，此行為會變更。</p>
+<h2>需求</h2>
+<p>
+此指令需要 SPSS 社群網站 (www.ibm.com/developerworks/spssdevcentral) 中的 Python Essentials 及 STATS ADJUST WIDTHS 延伸指令。
+</p>
+</body>
+</html>

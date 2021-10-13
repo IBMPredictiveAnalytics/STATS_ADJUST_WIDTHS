@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Extension debug="false" version="1.0" xmlns="http://spss.com/clementine/extensions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://spss.com/clementine/extensions http://xml.spss.com/clementine/extensions/CLEFSpecificationFile.xsd">
+	<ExtensionDetails copyright="Licensed Materials - Property of IBM.  IBM SPSS Products: Statistics Common (C) Copyright IBM Corp. 1989, 2014.  US Government Users Restricted Rights - Use, duplication or  disclosure restricted by GSA ADP Schedule Contract with IBM Corp." description="" id="STATS_ADJUST_WIDTHS" label="" provider="SPSS, Inc." providerTag="spss" version="1.0"/>
+	<Resources>
+		<Bundle id="bundle1" path="STATS_ADJUST_WIDTHS" type="properties"/>
+	</Resources>
+	<CommonObjects>
+		<Actions>
+			<Action id="STATS_ADJUST_WIDTHS_action" imagePath="IBMdialogicon.png" label="Adjust String Widths Across Files" labelKey="STATS_ADJUST_WIDTHS_action.LABEL"/>
+		</Actions>
+	</CommonObjects>
+	<UserInterface>
+		<Controls>
+			<MenuItem action="STATS_ADJUST_WIDTHS_action" offset="15" showIcon="true" spssMenu="Data"/>
+		</Controls>
+	</UserInterface>
+	<Node id="STATS_ADJUST_WIDTHS" label="Adjust String Widths Across Files" labelKey="STATS_ADJUST_WIDTHS.LABEL" type="modelBuilder">
+		<Properties>
+			<Property addOns="[Python]" name="STATS_ADJUST_WIDTHS" syntax="STATS ADJUST WIDTHS %%variables%%  %%Size%% %%exactsize%% %%maxsize%%   %%datasetnameroot%%&#10;/FILES * %%filename%%   &#10;%%saving%%  %%directory%%  %%overwrite%%  %%suffix%% %%close%%&#10;"/>
+			<Property description="false" name="STATS_ADJUST_WIDTHS_modal"/>
+			<Property description="" descriptionKey="source_vars_tooltip.LABEL" isList="true" label="String Variables:" labelKey="source_vars.LABEL" name="source_vars" selectionPool="source_fields" syntax="%%ThisValue%%" valueType="field"/>
+			<Property description="" descriptionKey="variables_tooltip.LABEL" isList="true" isRequired="true" label="Variables to Adjust:" labelKey="variables.LABEL" name="variables" selectionPool="source_fields" syntax="VARIABLES=%%ThisValue%%" valueType="field"/>
+			<Property defaultValue="" description="Select a file whose variables will be adjusted to match the active file" descriptionKey="filename_tooltip.LABEL" filename_filter="All File Types (*.*)|*.*|A^Data File (*.sav)|*.sav|D^" isRequired="true" label="File to Synchronize:" labelKey="filename.LABEL" name="filename" syntax="%%ThisValue%%" valueType="string"/>
+			<Property description="" descriptionKey="saving_tooltip.LABEL" label="" labelKey="saving.LABEL" name="saving" syntax="%%ThisValue%%"/>
+			<Property defaultValue="false" description="Save both the active file and the secondary one" descriptionKey="item_47_tooltip.LABEL" label="Resave file after adjustments if modified" labelKey="item_47.LABEL" name="item_47" syntax="/OUTFILE RESAVE=YES±" valueType="boolean"/>
+			<Property defaultValue="false" description="" descriptionKey="overwrite_tooltip.LABEL" label="Overwrite existing file" labelKey="overwrite.LABEL" name="overwrite" syntax="OVERWRITE=YES±OVERWRITE=NO" valueType="boolean"/>
+			<Property defaultValue="" description="" descriptionKey="suffix_tooltip.LABEL" label="Append suffix to file name root:" labelKey="suffix.LABEL" name="suffix" syntax="SUFFIX=&quot;%%ThisValue%%&quot;" valueType="string"/>
+			<Property defaultValue="false" description="" descriptionKey="close_tooltip.LABEL" label="Close file after saving" labelKey="close.LABEL" name="close" syntax="CLOSE=YES±CLOSE=NO" valueType="boolean"/>
+			<Property defaultValue="" description="Select a directory for the output files or leave empty to rewrite to original location.  If empty, the active file is not saved" descriptionKey="directory_tooltip.LABEL" directory_filter="All File Types (*.*)|*.*|A^" label="Write files to directory:" labelKey="directory.LABEL" name="directory" syntax="DIRECTORY=%%ThisValue%%" valueType="string"/>
+			<Property defaultValue="max" description="" descriptionKey="Size_tooltip.LABEL" label="Size Adjustment Rule" labelKey="Size.LABEL" name="Size" syntax="%%ThisValue%%" valueType="enum">
+				<Enumeration>
+					<Enum description="Resize each string variable to its maximum width across files" descriptionKey="max_tooltip.LABEL" hasSubGroup="false" label="Maximum across files" labelKey="max.LABEL" mnemonic="M" mnemonicKey="max_mnemonic.VALUE" syntax="WIDTH=MAX" value="max"/>
+					<Enum description="Resize each variable to its minimum width across files.  Data loss may occur" descriptionKey="min_tooltip.LABEL" hasSubGroup="false" label="Minimum across files" labelKey="min.LABEL" mnemonic="N" mnemonicKey="min_mnemonic.VALUE" syntax="WIDTH=MIN" value="min"/>
+					<Enum description="Resize each variable to its size in the active dataset.  Data loss may occur" descriptionKey="first_tooltip.LABEL" hasSubGroup="false" label="Size in the active dataset" labelKey="first.LABEL" mnemonic="A" mnemonicKey="first_mnemonic.VALUE" syntax="WIDTH=FIRST" value="first"/>
+					<Enum description="Reisze each variable to specified size.  Data loss may occur" descriptionKey="exact_tooltip.LABEL" hasSubGroup="true" label="Exact size" labelKey="exact.LABEL" mnemonic="E" mnemonicKey="exact_mnemonic.VALUE" value="exact"/>
+				</Enumeration>
+			</Property>
+			<Property defaultValue="" description="" descriptionKey="exactsize_tooltip.LABEL" isRequired="true" label="Value:" labelKey="exactsize.LABEL" max="32767" min="1" name="exactsize" syntax="EXACTWIDTH=%%ThisValue%%" valueType="integer"/>
+			<Property defaultValue="32767" description="" descriptionKey="maxsize_tooltip.LABEL" label="Maximum size:" labelKey="maxsize.LABEL" max="32767" min="1" name="maxsize" syntax="MAXWIDTH=%%ThisValue%%" valueType="integer"/>
+			<Property defaultValue="adjust_" description="File(s) opened will be assigned a dataset name starting with this prefix plus an integer" descriptionKey="datasetnameroot_tooltip.LABEL" label="Prefix for Dataset Name:" labelKey="datasetnameroot.LABEL" name="datasetnameroot" syntax="DSNAMEROOT=%%ThisValue%%" valueType="string"/>
+		</Properties>
+		<SelectionPool id="source_fields" type="fields"/>
+		<UserInterface>
+			<Tabs>
+				<Tab helpLink="STATS_ADJUST_WIDTHS.htm">
+					<PropertiesPanel>
+						<SourceFieldsBrowser copyFields="false" mnemonic="T" mnemonicKey="source_vars_mnemonic.VALUE" property="source_vars" selectionPool="source_fields" storage="[string]">
+							<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+						</SourceFieldsBrowser>
+						<MultiFieldChooserControl mnemonic="V" mnemonicKey="variables_mnemonic.VALUE" property="variables" storage="[real integer date time string]">
+							<Layout columnWeight="1.0" fill="both" gridColumn="2" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+						</MultiFieldChooserControl>
+						<ServerFileChooserControl mnemonic="F" mnemonicKey="filename_mnemonic.VALUE" mode="open" property="filename">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+						</ServerFileChooserControl>
+						<PropertiesSubPanel buttonLabel="Save..." buttonLabelKey="save.LABEL" dialogTitle="Save options" dialogTitleKey="Save.TITLE" helpLink="" mnemonic="S" mnemonicKey="save_mnemonic.VALUE">
+							<Layout columnWeight="0.0" fill="none" gridColumn="3" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+							<PropertiesPanel>
+								<PropertiesPanel id="saving" label="" labelKey="saving.LABEL">
+									<Layout columnWeight="1.0" fill="both" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="1.0"/>
+									<CheckBoxControl labelAbove="true" mnemonic="R" mnemonicKey="item_47_mnemonic.VALUE" property="item_47">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="0" gridWidth="1" rowWeight="0.0"/>
+									</CheckBoxControl>
+									<CheckBoxControl mnemonic="O" mnemonicKey="overwrite_mnemonic.VALUE" property="overwrite">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="1" gridWidth="1" leftIndent="8" rowWeight="0.0"/>
+									</CheckBoxControl>
+									<TextBoxControl mnemonic="A" mnemonicKey="suffix_mnemonic.VALUE" property="suffix">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="2" gridWidth="1" leftIndent="8" rowWeight="0.0"/>
+									</TextBoxControl>
+									<CheckBoxControl mnemonic="C" mnemonicKey="close_mnemonic.VALUE" property="close">
+										<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="3" gridWidth="1" leftIndent="8" rowWeight="0.0"/>
+									</CheckBoxControl>
+									<ServerDirectoryChooserControl mnemonic="W" mnemonicKey="directory_mnemonic.VALUE" mode="save" property="directory">
+										<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="4" gridWidth="1" leftIndent="8" rowWeight="1.0"/>
+									</ServerDirectoryChooserControl>
+								</PropertiesPanel>
+								<StaticText text="The active file will only be saved if a directory is specified.  It will be\nsaved as dsname.sav, where dsname is the current dataset name\nnot under any original  file name" textKey="item_657.LABEL">
+									<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="1" gridWidth="1" rowWeight="0.0"/>
+								</StaticText>
+							</PropertiesPanel>
+						</PropertiesSubPanel>
+						<RadioButtonGroupControl property="Size" rows="4" useSubPanel="false">
+							<Layout columnWeight="1.0" fill="both" gridColumn="2" gridRow="1" gridWidth="1" rowWeight="1.0"/>
+							<RadioButton property="max"/>
+							<RadioButton property="min"/>
+							<RadioButton property="first"/>
+							<RadioButton property="exact">
+								<TextBoxControl mnemonic="X" mnemonicKey="exactsize_mnemonic.VALUE" property="exactsize">
+									<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="0" gridWidth="1" leftIndent="16" rowWeight="1.0"/>
+								</TextBoxControl>
+							</RadioButton>
+						</RadioButtonGroupControl>
+						<TextBoxControl mnemonic="U" mnemonicKey="maxsize_mnemonic.VALUE" property="maxsize">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="2" gridRow="2" gridWidth="1" rowWeight="0.0"/>
+						</TextBoxControl>
+						<TextBoxControl mnemonic="D" mnemonicKey="datasetnameroot_mnemonic.VALUE" property="datasetnameroot">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="2" gridRow="3" gridWidth="1" rowWeight="0.0"/>
+						</TextBoxControl>
+						<StaticText text="See help for additional functionality\navailable in syntax" textKey="item_44.LABEL">
+							<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="2" gridWidth="1" rowWeight="0.0"/>
+						</StaticText>
+						<StaticText text="This dialog requires the Python Essentials" textKey="item_45.LABEL">
+							<Layout columnWeight="1.0" fill="none" gridColumn="0" gridRow="3" gridWidth="1" rowWeight="0.0"/>
+						</StaticText>
+						<StaticText text="This dialog was created using a later version of PASW Statistics\nand certain features may not function as intended." textKey="v17_warning.LABEL">
+							<Layout columnWeight="1.0" fill="horizontal" gridColumn="0" gridRow="4" gridWidth="1" rowWeight="1.0"/>
+						</StaticText>
+					</PropertiesPanel>
+				</Tab>
+			</Tabs>
+		</UserInterface>
+	</Node>
+</Extension>

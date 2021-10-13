@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Skoryguj szerokości zmiennych</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Skoryguj szerokości zmiennych łańcuchowych w plikach</h1>
+<p>
+Podczas łączenia plików zawierających zmienne łańcuchowe odpowiadające zmienne muszą być tej samej szerokości.  Za pomocą tej procedury można zsynchronizować szerokości w zbiorze plików lub zbiorach danych.
+</p>
+<p>Działanie wykonywane w tym oknie dialogowym dotyczy aktywnego pliku oraz jednego pliku zewnętrznego.  Za pomocą komendy można przetwarzać wiele plików jednocześnie.</p>
+
+<p class="step"><span class="step-glyph">►</span>Aby uruchomić tę procedurę, wybierz z menu opcję:</p>
+<p class="menuselection">&nbsp;Dane<br>&nbsp;&nbsp;Dane>Skoryguj szerokości zmiennych...</p>
+
+<p><span class="runinhead">Plik do zsynchronizowania</span> Wybierz plik do zsynchronizowania z aktywnym plikiem.</p>
+<p class="bullet">&bull; Jeśli plik jest już otwarty, zostanie on otwarty ponownie, a wszelkie niezapisane zmiany zostaną utracone.
+<p class="bullet">&bull; Aby możliwe było uruchomienie tej komendy, aktywny plik musi zawierać nazwę zbioru danych.
+<p><span class="runinhead">Zmienne do skorygowania</span> Wybierz zmienne (łańcuchowe), których szerokości zostaną skorygowane</p>
+<p class="bullet">&bull; Wybrana zmienna nie musi występować w każdym pliku.
+<p><span class="runinhead">Reguła korekty rozmiaru</span> Wybierz sposób korekcji szerokości.  Korekty są wprowadzane oddzielnie w przypadku każdej zmiennej.  W przypadku maksimum szerokości zmiennych zostaną skorygowane do najszerszej instancji zmiennej itd.
+W przypadku wybrania opcji Pierwsza szerokością docelową będzie szerokość zmiennej w aktywnym zbiorze danych.
+<p class="bullet">&bull; Jeśli wynikowa zmienna jest zbyt mała i nie obejmuje wszystkich wartości, dane wartości zostaną obcięte.
+
+<p><span class="runinhead">Maksymalny rozmiar</span> Reguły rozmiaru są ograniczone przez to określone maksimum.
+<p><span class="runinhead">Przedrostek nazwy zbioru danych</span> Po otwarciu pliku zostanie do niego przypisana nazwa zbioru danych składająca się z przedrostka i kolejnej liczby całkowitej.
+<p class="bullet">&bull; Jeśli nazwa zbioru danych jest już używana, zostanie ona ponownie przypisana do tego pliku, a inny zbiór danych zostanie zamknięty.  Zmiany, które nie zostały wcześniej zapisane, zostaną utracone.
+
+<p>Za pomocą komendy ALTER TYPE można wprowadzać zmiany.  Odnośne zmienne zostaną zgłoszone w informacjach wyjściowych tej komendy.
+
+<h2>Zapisywanie</h2>
+Domyślnie zmodyfikowane pliki pozostają otwarte i nie są zapisywane.  Podrzędne okno dialogowe zapisu zapewnia funkcje zapisywania.</p>
+
+<p><span class="runinhead">Ponownie zapisz plik po wprowadzeniu korekt, o ile zostały one wykonane</span> Zaznacz to pole wyboru, aby zapisać przetworzone pliki.</p>
+<p class="bullet">&bull; Aktywny zbiór danych nie zostanie zapisany, o ile poniżej nie zostanie określony katalog.</p>
+<p class="bullet">&bull; Jeśli plik nie został zmodyfikowany, nie zostanie on ponownie zapisany.</p>
+<p><span class="runinhead">Zastąp istniejący plik</span> Zaznacz to pole wyboru, aby zastąpić istniejący plik za pomocą zmienionej wersji.</p>
+<p><span class="runinhead">Dodaj przyrostek do trzonu nazwy pliku</span>
+Podczas zapisywania pliku do trzony nazwy pliku można dodać przyrostek. Przykładowo: określenie przyrostka _adjusted może spowodować utworzenie nazwy mydata_adjusted.sav</p>
+<p><span class="runinhead">Zamknij plik po zapisaniu</span> Zaznacz to pole wyboru, aby automatycznie zamknąć plik po przetworzeniu.  To rozwiązanie powoduje obniżenie wydajności pracy, jeśli plik nie jest również zapisywany, jednak aktywny plik nigdy nie jest zamykany.
+<p><span class="runinhead">Zapisz pliki w katalogu</span> Wybierz katalog, w którym zostaną zapisane pliki.  W przypadku braku określenia katalogu pliki są zapisywane w oryginalnej lokalizacji.
+<p class="bullet">&bull; Aktywny plik nie zostanie zapisany na dysku, o ile nie zostanie określony katalog.
+Po zapisaniu nazwą jest dsname.sav, gdzie dsname oznacza nazwę zbioru danych.  Przyrostek nie jest dodawany.
+
+<h2>Funkcje dodatkowe</h2>
+<p>
+Za pomocą komendy można opracowywać więcej niż dwa pliki wejściowe lub zbiory danych, a aktywny plik nie musi być uwzględniony.  Komenda będzie również działać w przypadku pojedynczego pliku.
+<p>W przypadku określenia katalogu, gdy ostatni poziom nie istnieje, zostanie on utworzony przez tę komendę.
+<p>Wykonaj komendę<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+aby wyświetlić pełna składnię.
+</p>
+<p>Uwaga: oryginalna wersja tej komendy powoduje ponowne zapisanie plików, nawet jeśli nie zostały one zmodyfikowane.  Choć to wygodne, zachowanie to zmieniono, aby usprawnić pracę z bardzo dużą liczbą plików.</p>
+<h2>Wymagania</h2>
+<p>
+Ta komenda wymaga dodatku Python Essentials oraz komendy rozszerzającej STATS ADJUST WIDTHS dostępnej w witrynie SPSS Community (www.ibm.com/developerworks/spssdevcentral).
+</p>
+</body>
+</html>

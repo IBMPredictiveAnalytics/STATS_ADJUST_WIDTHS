@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajustar los anchos de variable</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Ajustar los anchos de variable de cadena en los archivos</h1>
+<p>
+Al fusionar archivos que contienen variables de cadena, las variables coincidentes deben tener el mismo ancho.  Este procedimiento sincroniza los distintos anchos en una colección de archivos o conjuntos de datos.
+</p>
+<p>El cuadro de diálogo funciona en el archivo activo más un archivo externo.  Mediante la sintaxis, puede procesar muchos archivos a la vez.</p>
+
+<p class="step"><span class="step-glyph">►</span>Para ejecutar este procedimiento, desde los menús seleccione:</p>
+<p class="menuselection">Datos<br>&nbsp;&nbsp;Datos>Ajustar los anchos de variable...</p>
+
+<p><span class="runinhead">Archivo que se va a sincronizar</span> Seleccione un archivo que se va a sincronizar con el archivo activo.</p>
+<p class="bullet">&bull; Si el archivo ya está abierto, se volverá a abrir, y se perderán los cambios que no haya guardado.
+<p class="bullet">&bull; El archivo activo debe tener un nombre de conjunto de datos para poder ejecutar este comando.
+<p><span class="runinhead">Variables que se van a ajustar</span> Seleccione las variables (cadenas) cuyo ancho debe ajustarse.</p>
+<p class="bullet">&bull; No es necesario que una variable seleccionada aparezca en cada archivo.
+<p><span class="runinhead">Regla de ajuste de tamaño</span> Elija cómo se van a ajustar los anchos.  El ajuste se realiza de forma separada para cada variable.  Como valor máximo, los anchos de variable se ajustarán a la instancia más amplia de la variable, y así sucesivamente.
+Si elige Primero, el ancho de destino será el de la variable del conjunto de datos activo.
+<p class="bullet">&bull; Si el campo resultante es demasiado pequeño para contener todos sus valores, estos valores se truncarán.
+
+<p><span class="runinhead">Tamaño máximo</span> Las reglas sobre el tamaño están restringidas por este valor máximo especificado.
+<p><span class="runinhead">Prefijo para nombres de conjuntos de datos</span> Al abrir un archivo, se asigna un nombre de conjunto de datos que se compone del prefijo y un entero secuencial.
+<p class="bullet">&bull; Si ese nombre de conjunto de datos ya se está utilizando, se reasigna a dicho archivo y el otro conjunto de datos se cierra.  Se perderán los cambios que no se hayan guardado previamente.
+
+<p>El comando ALTER TYPE se utiliza para realizar los cambios.  Las variables afectadas se notificarán en la salida de este comando.
+
+<h2>Guardar</h2>
+De manera predeterminada, los archivos modificados se quedan abiertos y no se guardan.  Puede utilizar el subcuadro de diálogo Guardar para guardar los archivos cuando convenga.</p>
+
+<p><span class="runinhead">Volver a guardar el archivo después de los ajustes si se ha modificado</span> Marque esta casilla para guardar los archivos procesados.</p>
+<p class="bullet">&bull; El conjunto de datos activo no se guardará a menos que se especifique un directorio más abajo.</p>
+<p class="bullet">&bull; Si el archivo no se ha modificado, no se volverá a guardar.</p>
+<p><span class="runinhead">Sobrescribir archivo existente</span> Marque esta casilla para sobrescribir un archivo existente por la versión modificada.</p>
+<p><span class="runinhead">Añadir sufijo a la raíz del nombre de archivo</span> Al guardar un archivo, se puede añadir un sufijo a la raíz del nombre de archivo, por ejemplo, si especifica _ajustado, el nombre del archivo puede ser misDatos_ajustado.sav</p>
+<p><span class="runinhead">Cerrar archivo después de guardar</span> Marque esta casilla para cerrar automáticamente el archivo después de procesarlo.  Esto puede ser contraproducente si el archivo no se ha guardado; no obstante, el archivo activo no se cierra nunca.
+<p><span class="runinhead">Escribir archivos en el directorio</span> Seleccione un directorio en el que se van a grabar los archivos.  Si no se especifica ninguno, los archivos se guardan en la ubicación original.
+<p class="bullet">&bull; El archivo activo no se guarda en el disco a menos que se especifique un directorio.
+Cuando se guarda el archivo, el nombre tiene el formato dsname.sav, en el que dsname es el nombre del conjunto de datos.  No se añade ningún sufijo.
+
+<h2>Características adicionales</h2>
+<p>
+Mediante la sintaxis, puede trabajar con más de dos archivos o conjuntos de datos de entrada, y no es necesario incluir el archivo activo.  El comando también funciona con un único archivo.
+<p>Si especifica un directorio, y no existe el último nivel, este comando lo creará.
+<p>Ejecutar<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+para mostrar toda la sintaxis.
+</p>
+<p>Nota: la versión original de este comando volvía a guardar los archivos aunque no se hubieran modificado.  Aunque pudiera resultar conveniente, este comportamiento se modificó porque funciona mejor si el número de archivos es muy elevado.</p>
+<h2>Requisitos</h2>
+<p>
+Este comando requiere Python Essentials y el comando de extensión STATS ADJUST WIDTHS del sitio web de la Comunidad de SPSS (www.ibm.com/developerworks/spssdevcentral).
+</p>
+</body>
+</html>

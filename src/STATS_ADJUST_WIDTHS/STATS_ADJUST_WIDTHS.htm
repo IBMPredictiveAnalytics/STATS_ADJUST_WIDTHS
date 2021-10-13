@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Adjust Variable Widths</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Adjust Widths of String Variables Across Files</h1>
+<p>
+When merging files containing string variables, the matching variables must
+have the same width.  This procedure synchronizes the widths across a collection
+of files or datasets.
+</p>
+<p>The dialog operates on the active file plus one external file.  Using syntax,
+you can process many files at once.</p>
+
+<p class="step"><span class="step-glyph">►</span>To run this procedure, from the menus choose:</p>
+<p class="menuselection">&nbsp;Data<br>&nbsp;&nbsp;Data>Adjust Variable Widths...</p>
+
+<p><span class="runinhead">File to Synchronize</span> Select a file to be synchronized
+with the active file.</p>
+<p class="bullet">&bull; If the file is already open, it will be reopened, and any unsaved
+changes will be lost.
+<p class="bullet">&bull; The active file must have a dataset name in order to run this command.
+<p><span class="runinhead">Variables to Adjust</span> Select the (string) variables whose
+widths should be adjusted</p>
+<p class="bullet">&bull; A selected variable need not appear in every file.
+<p><span class="runinhead">Size Adjustment Rule</span>  Choose how the widths are
+to be adjusted.  The adjustment is made separately for each variable.  For maximum,
+the variable widths will be adjusted to the widest instance of the variable, and so on.
+If you choose First, the target width will be that of the variable in the active dataset.
+<p class="bullet">&bull; If the resulting field is too small to hold all its values, those
+values will be truncated.
+
+<p><span class="runinhead">Maximum size</span> The size rules are constrained by this
+specified maximum.
+<p><span class="runinhead">Prefix for Dataset Names</span> When a file is opened, it
+is assigned a dataset name consisting of the prefix and a sequential integer.
+<p class="bullet">&bull; If that dataset name is already in use, it is reassigned to
+this file, and the other dataset is closed.  Changes not previously saved are lost.
+
+<p>The ALTER TYPE command is used to make the changes.  Affected variables
+will be reported in the output of that command.
+
+<h2>Save</h2>
+By default, the modified files are left open and  not saved.  The Save subdialog provides
+saving functionality for convenience.</p>
+
+<p><span class="runinhead">Resave file after adjustments if modified</span> Check this
+box to save the files processed.</p>
+<p class="bullet">&bull; The active dataset will  not be saved unless a directory
+is specified below.</p>
+<p class="bullet">&bull; If the file has not been modified, it is not resaved.</p>
+<p><span class="runinhead">Overwrite existing file</span> Check this box to
+overwrite an existing file with the changed version.</p>
+<p><span class="runinhead">Append suffix to file name root</span>
+When saving a file, a suffix can be appended to the root of the file name,
+For example, specifying _adjusted might result in a file name
+mydata_adjusted.sav</p>
+<p><span class="runinhead">Close file after saving</span> Check this box to
+automatically close the file after it is processed.  This is counterproductive if
+the file is not also saved, however the active file is never closed.
+<p><span class="runinhead">Write files to directory</span> Select a directory
+where the files should be written.  If nothing is specified, files are saved in the
+original location.
+<p class="bullet">&bull; The active file is not saved to disk unless a directory is specified.
+When it is saved, the name has the form dsname.sav, where dsname is the
+dataset name.  No suffix is appended.
+
+<h2>Additional Features</h2>
+<p>
+Using syntax, you can work with more than two input files or datasets, and the active
+file does not need to be included.  The command will also work with only a single file.
+<p>If you specify a directory, and the last level does not exist, it will be created
+by this command.
+<p>Execute<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+to display the full syntax.
+</p>
+<p>Note: the original version of this command would resave files even if
+they had not been modified.  While sometimes convenient, this behavior
+was changed as part of working better with very large numbers of files.</p>
+<h2>Requirements</h2>
+<p>
+This command requires the Python Essentials and the STATS ADJUST WIDTHS
+extension command from the SPSS Community website (www.ibm.com/developerworks/spssdevcentral).
+</p>
+</body>
+</html>

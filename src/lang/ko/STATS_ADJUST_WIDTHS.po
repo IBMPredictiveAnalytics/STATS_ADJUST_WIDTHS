@@ -1,102 +1,61 @@
-#/***********************************************************************
-# * Licensed Materials - Property of IBM 
-# *
-# * IBM SPSS Products: Statistics Common
-# *
-# * (C) Copyright IBM Corp. 1989, 2014
-# *
-# * US Government Users Restricted Rights - Use, duplication or disclosure
-# * restricted by GSA ADP Schedule Contract with IBM Corp. 
-# ************************************************************************/
-
-# NLS_ENCODING=UTF-8
-# IBMUPYTH
-
-
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-10-11 00:35-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Globalization Pipeline\n"
 
-
-#: STATS_ADJUST_WIDTHS.py:122
-msgid "The active dataset must have a dataset name in order to run this command"
-msgstr ""
-"이 명령문을 실행하려면 활성 데이터 세트의 데이터 세트 이름이 있어야 합니다."
-
-#: STATS_ADJUST_WIDTHS.py:133
-msgid "Specified output directory is not a directory: %s"
-msgstr ""
-"지정된 출력 디렉토리가 디렉토리가 아닙니다. %s"
-
-#: STATS_ADJUST_WIDTHS.py:145
-msgid "Type Conflicts"
-msgstr ""
-"유형 충돌"
-
-#: STATS_ADJUST_WIDTHS.py:146
-msgid "String-Numeric Type Conflicts"
-msgstr ""
-"문자열-숫자 유형 충돌"
-
-#: STATS_ADJUST_WIDTHS.py:147
-msgid "Only the first 20 errors are shown"
-msgstr ""
-"처음 20개의 오류만 표시됩니다."
-
-#: STATS_ADJUST_WIDTHS.py:148
-msgid "Dataset or File Name"
-msgstr ""
-"데이터 세트 또는 파일 이름"
-
-#: STATS_ADJUST_WIDTHS.py:149
-msgid "String Variables Numeric in a Previous File"
-msgstr ""
-"이전 파일에서 문자변수가 숫자입니다."
-
-#: STATS_ADJUST_WIDTHS.py:150
-msgid "Numeric Variables String in a Previous File"
-msgstr ""
-"이전 파일에서 숫자 변수가 문자열입니다."
-
-#: STATS_ADJUST_WIDTHS.py:306
-msgid "None of the specified variables were found in any of the specified files"
-msgstr ""
-"지정된 파일에서 지정된 변수를 찾을 수 없습니다."
-
-#: STATS_ADJUST_WIDTHS.py:346
 msgid ""
-"Using the \"first\" method, a variable was found in a later file\n"
-"that is not present in the first file: %s"
-msgstr ""
-"\"첫 번째\" 방법을 사용하여\n"
-"첫 번째 파일 %s에 없는 변수를 다음 파일에서 찾았습니다."
+"The active dataset must have a dataset name in order to run this command"
+msgstr "이 명령문을 실행하려면 활성 데이터 세트의 데이터 세트 이름이 있어야 합니다."
 
-#: STATS_ADJUST_WIDTHS.py:386
+msgid "Specified output directory is not a directory: %s"
+msgstr "지정된 출력 디렉토리가 디렉토리가 아닙니다. %s"
+
+msgid "Type Conflicts"
+msgstr "유형 충돌"
+
+msgid "String-Numeric Type Conflicts"
+msgstr "문자열-숫자 유형 충돌"
+
+msgid "Only the first 20 errors are shown"
+msgstr "처음 20개의 오류만 표시됩니다."
+
+msgid "Dataset or File Name"
+msgstr "데이터 세트 또는 파일 이름"
+
+msgid "String Variables Numeric in a Previous File"
+msgstr "이전 파일에서 문자변수가 숫자입니다."
+
+msgid "Numeric Variables String in a Previous File"
+msgstr "이전 파일에서 숫자 변수가 문자열입니다."
+
+msgid ""
+"None of the specified variables were found in any of the specified files"
+msgstr "지정된 파일에서 지정된 변수를 찾을 수 없습니다."
+
+msgid ""
+"Using the \"first\" method, a variable was found in a later file\nthat is not "
+"present in the first file: %s"
+msgstr "\"첫 번째\" 방법을 사용하여\n첫 번째 파일 %s에 없는 변수를 다음 파일에서 찾았습니다."
+
 msgid "File %s already exists and will not be overwritten."
-msgstr ""
-"%s 파일이 이미 있으므로 덮어쓸 수 없습니다."
+msgstr "%s 파일이 이미 있으므로 덮어쓸 수 없습니다."
 
-#: STATS_ADJUST_WIDTHS.py:433
 msgid "---"
-msgstr ""
-"---"
+msgstr "---"
 
-#: STATS_ADJUST_WIDTHS.py:485
 msgid "Adjust Widths"
-msgstr ""
-"너비 조정"
-
-
-
+msgstr "너비 조정"

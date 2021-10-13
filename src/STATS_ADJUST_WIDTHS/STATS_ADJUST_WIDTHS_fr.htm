@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Ajustement de la largeur des variables</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Ajustement de la largeur des variables de chaîne dans les fichiers</h1>
+<p>
+Lorsque vous fusionnez des fichiers qui contiennent des variables de chaîne, les variables correspondantes doivent avoir la même largeur.  Cette procédure permet de synchroniser les largeurs dans un ensemble de fichiers ou de jeux de données.
+</p>
+<p>La boîte de dialogue fonctionne sur le fichier actif plus un fichier externe.  A l'aide de la syntaxe,
+vous pouvez traiter plusieurs fichiers simultanément.</p>
+
+<p class="step"><span class="step-glyph">►</span>Pour exécuter cette procédure, dans les menus, choisissez :</p>
+<p class="menuselection">&nbsp;Données<br>&nbsp;&nbsp;Données>Ajuster la largeur des variables...</p>
+
+<p><span class="runinhead">Fichier à synchroniser :</span> Sélectionnez le fichier à synchroniser avec le fichier actif.</p>
+<p class="bullet">&bull; Si le fichier est déjà ouvert, il est à nouveau ouvert et les modifications non enregistrées sont perdues.
+<p class="bullet">&bull; Le fichier actif doit comporter un nom de jeu de données pour pouvoir exécuter cette commande.
+<p><span class="runinhead">Variables à ajuster :</span> Sélectionnez les variables (chaîne) dont la largeur a besoin d'être ajustée.</p>
+<p class="bullet">&bull; La variable sélectionnée n'apparaît pas dans tous les fichiers.
+<p><span class="runinhead">Règle d'ajustement de la taille :</span> Choisissez la méthode d'ajustement des largeurs.  Ce réglage est effectué séparément pour chaque variable.  La largeur maximale des variables sera ajustée à l'instance la plus large de la variable, et ainsi de suite.
+Si vous choisissez Première, la largeur cible sera celle de la variable dans le jeu de données actif.
+<p class="bullet">&bull; Si le champ obtenu est trop petit pour contenir l'ensemble de ses valeurs, ces dernières sont tronquées.
+
+<p><span class="runinhead">Taille maximale :</span> Les règles de taille sont limitées par cette valeur.
+<p><span class="runinhead">Préfixe des noms de jeux de données :</span> Lorsqu'un fichier est ouvert, il est affecté à un nom de jeu de données composé d'un préfixe et d'un entier séquentiel.
+<p class="bullet">&bull; Si ce nom de jeu de données est déjà utilisé, il est affecté à nouveau à ce fichier et l'autre jeu de données est fermé.  Les modifications non enregistrées sont perdues.
+
+<p>La commande ALTER TYPE permet d'apporter des modifications.  Les variables concernées sont signalées dans la sortie de la commande.
+
+<h2>Sauvegarder</h2>
+Par défaut, les fichiers modifiés restent ouverts et ne sont pas enregistrés.  La sous-boîte de dialogue Enregistrer offre une fonction de sauvegarde pour plus de facilité.</p>
+
+<p><span class="runinhead">Nouvel enregistrement de fichier après ajustement :</span> Cochez cette case pour réenregistrer les fichiers traités.</p>
+<p class="bullet">&bull; Le jeu de données actif n'est enregistré que si un répertoire est spécifié ci-après.</p>
+<p class="bullet">&bull; Si le fichier n'a pas été modifié, il n'est pas réenregistré.</p>
+<p><span class="runinhead">Ecraser le fichier existant :</span> Cochez cette case pour remplacer le fichier existant par la version modifiée.</p>
+<p><span class="runinhead">Ajouter un suffixe à la racine du nom de fichier :</span>
+Lorsque vous enregistrez un fichier, un suffixe peut être ajouté à la racine du nom de fichier.
+Par exemple, si vous saisissez _adjusted, le nom de fichier deviendra mydata_adjusted.sav</p>
+<p><span class="runinhead">Fermer le fichier après enregistrement :</span> Cochez cette case pour fermer automatiquement le fichier une fois qu'il a été traité.  Ceci est contre-productif si le fichier n'est pas également enregistré. Toutefois, le fichier actif n'est jamais fermé.
+<p><span class="runinhead">Ecrire les fichiers dans le répertoire :</span> Sélectionnez le répertoire dans lequel écrire les fichiers.  Sinon, les fichiers sont enregistrés à l'emplacement d'origine.
+<p class="bullet">&bull; Le fichier actif n'est pas enregistré sur le disque si un répertoire n'est pas indiqué.
+Lors de l'enregistrement, le nom se présente au format dsname.sav, dsname étant le nom du jeu de données.  Aucun suffixe n'est ajouté.
+
+<h2>Fonctions supplémentaires</h2>
+<p>
+A l'aide de la syntaxe, vous pouvez utiliser plus de deux fichiers d'entrée ou jeux de données, et le fichier actif n'a pas besoin d'être inclus.  La commande fonctionne également avec un seul fichier.
+<p>Si vous indiquez un répertoire et que le dernier niveau n'existe pas, il est créé par cette commande.
+<p>Exécutez<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+pour afficher la syntaxe dans son intégralité.
+</p>
+<p>Remarque : La version d'origine de cette commande réenregistre les fichiers et ce, même s'ils n'ont pas été modifiés.  Bien que ce comportement soit parfois pratique, il a été modifié afin de travailler plus efficacement avec un grand nombre de fichiers.</p>
+<h2>Conditions requises</h2>
+<p>
+Cette commande requiert Python Essentials et la commande d'extension STATS ADJUST WIDTHS, disponibles sur le site Web de la communauté SPSS (www.ibm.com/developerworks/spssdevcentral).
+</p>
+</body>
+</html>

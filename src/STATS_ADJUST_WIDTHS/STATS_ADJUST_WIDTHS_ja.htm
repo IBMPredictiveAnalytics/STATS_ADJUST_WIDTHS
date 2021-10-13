@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>変数の幅の調整</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>ファイル間での文字型変数の幅の調整</h1>
+<p>
+文字型変数を含んでいるファイルを結合する場合は、一致する変数の幅が同じでなければなりません。この手順では、一連のファイル間またはデータセット間で幅を同期します。
+</p>
+<p>このダイアログの処理対象は、アクティブ ファイルと 1 つの外部ファイルです。シンタックスを使用することで、多数のファイルを一度に処理できます。</p>
+
+<p class="step"><span class="step-glyph">►</span>この手順を実行するには、メニューから次のコマンドを選択します。</p>
+<p class="menuselection">&nbsp;データ<br>&nbsp;&nbsp;「データ」>「変数の幅の調整...」</p>
+
+<p><span class="runinhead">同期するファイル:</span> アクティブ ファイルと同期するファイルを選択します。</p>
+<p class="bullet">&bull; このファイルが開いている場合は、ファイルが再度開かれるため、未保存の変更がすべて失われます。
+<p class="bullet">&bull; このコマンドを実行するには、アクティブ ファイルにデータセット名が必要です。
+<p><span class="runinhead">調整する変数:</span> 幅を調整する (文字型) 変数を選択します</p>
+<p class="bullet">&bull; 選択した変数がすべてのファイルに含まれている必要はありません。
+<p><span class="runinhead">サイズ調整規則:</span> 幅の調整方法を選択します。調整は変数ごとに行われます。変数の幅は、最大で変数の最も幅の長いインスタンスに調整されます。
+「最初」を選択した場合は、アクティブ データセット内の変数の幅が目的の幅となります。
+<p class="bullet">&bull; 結果のフィールドが小さすぎるためにその値をすべて格納できない場合は、それらの値が切り捨てられます。
+
+<p><span class="runinhead">最大サイズ:</span> サイズの規則は、ここで指定する最大値によって制約されます。
+<p><span class="runinhead">データセット名の接頭辞:</span> ファイルを開くと、そのファイルに接頭辞と連番の整数で構成されるデータセット名が割り当てられます。
+<p class="bullet">&bull; このデータセット名が既に使用されている場合は、その名前がこのファイルに再度割り当てられ、もう一方のデータセットが閉じられます。まだ保存されていない変更は失われます。
+
+<p>ALTER TYPE コマンドは、変更を加えるために使用します。このコマンドの出力には、影響を受けた変数が示されます。
+
+<h2>保存</h2>
+デフォルトでは、変更されたファイルは開いたままとなり、保存されません。ファイルを保存するには、「保存」サブダイアログを使用します。</p>
+
+<p><span class="runinhead">変更した場合に調整後のファイルを再保存:</span> 処理したファイルを保存する場合は、このボックスにチェック マークを付けます。</p>
+<p class="bullet">&bull; アクティブなデータセットは、この下でディレクトリを指定しないと保存されません。</p>
+<p class="bullet">&bull; ファイルが変更されていない場合は、再保存されません。</p>
+<p><span class="runinhead">既存のファイルを上書き:</span> 既存のファイルを変更したバージョンで上書きする場合は、このボックスにチェック マークを付けます。</p>
+<p><span class="runinhead">ファイル名ルートに接尾辞を追加:</span> ファイルを保存する際に、ファイル名のルートに接尾辞を追加できます。例えば「_adjusted」と指定すると、mydata_adjusted.sav などのファイル名が作成されます。</p>
+<p><span class="runinhead">保存後にファイルを閉じる:</span> 処理後のファイルを自動的に閉じる場合は、このボックスにチェック マークを付けます。同時にファイルを保存しないと逆効果になりますが、アクティブ ファイルが閉じられることはありません。
+<p><span class="runinhead">ファイルを書き込むディレクトリ:</span> ファイルを書き込むディレクトリを選択します。何も指定しなかった場合は、ファイルが元の場所に保存されます。
+<p class="bullet">&bull; ディレクトリを指定しないと、アクティブ ファイルはディスクに保存されません。
+保存されたファイルには、dsname.sav という形式の名前が付けられます (dsname はデータセット名)。接尾辞は付加されません。
+<h2>その他の機能</h2>
+<p>
+シンタックスを使用して、3 つ以上の入力ファイルまたはデータセットを処理できます。アクティブ ファイルを含める必要はありません。また、コマンドでは単一のファイルを操作することもできます。
+<p>ディレクトリを指定した場合に最後のレベルが存在しないときは、このコマンドによってレベルが作成されます。
+<p>実行
+<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+完全なシンタックスが表示されます。
+</p>
+<p>注: このコマンドの当初のバージョンでは、未変更の場合でもファイルが再保存されていました。この動作は、場合によっては便利でしたが、大量のファイルをより迅速に処理できるように変更されました。</p>
+<h2>要件</h2>
+<p>
+このコマンドには、Python Essentials と STATS ADJUST WIDTHS 拡張コマンドが必要です。どちらも SPSS Community Web サイト (www.ibm.com/developerworks/spssdevcentral) で入手できます。
+</p>
+</body>
+</html>
