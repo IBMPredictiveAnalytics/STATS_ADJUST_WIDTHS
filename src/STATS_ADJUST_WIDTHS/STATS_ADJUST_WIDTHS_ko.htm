@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>변수 너비 조정</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>파일 전체에서 문자변수의 너비 조정</h1>
+<p>
+문자변수를 포함하는 파일을 병합하는 경우 매치하는 변수의 너비가
+동일해야 합니다. 이 프로시저는 파일 또는 데이터 세트 콜렉션 전체의 너비를
+동기화합니다.
+</p>
+<p>이 대화 상자는 활성 파일 및 한 개의 외부 파일에 대해 작동합니다. 명령문을 사용하여 많은 파일을 한 번에
+처리할 수 있습니다.</p>
+
+<p class="step"><span class="step-glyph">►</span>이 프로시저를 실행하려면 메뉴에서 다음을 선택합니다.</p>
+<p class="menuselection">&nbsp;데이터<br>&nbsp;&nbsp;데이터>변수 너비 조정...</p>
+
+<p><span class="runinhead">동기화할 파일</span> 활성 파일과 동기화할 파일을
+선택하십시오.</p>
+<p class="bullet">&bull; 파일이 이미 열려 있으면 다시 열리고 저장되지 않은 변경사항이 모두
+손실됩니다.
+<p class="bullet">&bull; 이 명령문을 실행하려면 활성 파일의 데이터 세트 이름이 있어야 합니다.
+<p><span class="runinhead">조정할 변수</span> 너비를 조정해야 할 (문자열) 변수를 선택하십시오.</p>
+<p class="bullet">&bull; 선택된 변수는 모든 파일에는 나타나지 않아도 됩니다.
+<p><span class="runinhead">크기 조정 규칙</span>  너비를 조정하는 방법을 선택하십시오. 각 변수에 대해 개별적으로 조정이 이루어집니다. 최대값인 경우
+변수 너비는 가장 넓은 변수 인스턴스로 조정됩니다.
+첫 번째를 선택할 경우 대상 너비는 활성 데이터 세트의 변수 너비가 됩니다.
+<p class="bullet">&bull; 결과 필드가 너무 작아서 해당 값을 포함할 수 없으면 값이 잘립니다. <p><span class="runinhead">최대 크기</span> 크기 규칙은 이러한 지정된 최대값으로 제한됩니다.
+<p><span class="runinhead">데이터 세트 이름에 대한 접두문자</span> 파일이 열리면 파일에 접두문자와 순차적인 정수로 구성된 데이터 세트 이름이 지정됩니다.
+<p class="bullet">&bull; 데이터 세트 이름이 이미 사용 중이면 이 파일에 다시 지정되고
+다른 데이터 세트는 닫힙니다. 이전에 저장되지 않은 변경사항은 손실됩니다. <p>ALTER TYPE 명령문은 변경사항을 작성하는 데 사용됩니다. 영향을 받는 변수가
+해당 명령문의 출력에 보고됩니다. <h2>저장</h2>
+기본적으로 수정된 파일은 열린 상태이며 저장되지 않습니다. 저장 하위 대화 상자는
+편의상 저장 기능을 제공합니다.</p>
+
+<p><span class="runinhead">수정된 경우 조정 후 파일 다시 저장</span> 처리된 파일을 저장하려면 이 상자를 선택하십시오.</p>
+<p class="bullet">&bull; 디렉토리가 아래에 지정되지 않은 경우 활성 데이터 세트가 저장되지 않습니다.</p>
+<p class="bullet">&bull; 수정되지 않은 파일은 다시 저장되지 않습니다.</p>
+<p><span class="runinhead">기존 파일 덮어쓰기</span> 기존 파일을 변경된 버전으로 덮어쓰려면
+이 상자를 선택하십시오.</p>
+<p><span class="runinhead">파일 이름 루트에 접미문자 추가</span>
+파일을 저장할 때 접미문자를 파일 이름의 루트에 추가할 수 있습니다.
+예를 들어, _adjusted를 지정하면 파일 이름이 mydata_adjusted.sav가
+될 수 있습니다.</p>
+<p><span class="runinhead">저장 후 파일 닫기</span> 파일을 처리한 후 자동으로 닫으려면 이 상자를 선택하십시오. 이 방법은 파일을 저장하지 않는 경우에는 효율적이지 않지만 활성 파일이 닫히지 않는 효과가 있습니다.
+<p><span class="runinhead">디렉토리에 파일 쓰기</span> 파일을 쓸 디렉토리를 선택하십시오. 아무 것도 지정하지 않으면
+파일이 원래 위치에 저장됩니다.
+<p class="bullet">&bull; 디렉토리를 지정하지 않은 경우 활성 파일이 디스크에 저장되지 않습니다.
+파일을 저장하면 이름이 dsname.sav 형식이 됩니다. 여기서 dsname은
+데이터 세트 이름입니다. 접미문자는 추가되지 않습니다. <h2>추가 기능</h2>
+<p>
+명령문을 사용하여 세 개 이상의 입력 파일 또는 데이터 세트 작업을 수행할 수 있습니다. 활성 파일은 포함하지 않아도 됩니다. 또한 명령문은 단일 파일에서만 작동합니다.
+<p>디렉토리를 지정했는데 마지막 수준이 없으면 이 명령문을 통해 디렉토리가 작성됩니다.
+<p>실행<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+전체 명령문을 표시합니다.
+</p>
+<p>참고: 이 명령문의 원래 버전은 수정되지 않은 파일도
+다시 저장했습니다. 하지만 경우에 따라 편의상
+이 동작은 파일 수가 아주 많은 작업에서 더 효율적으로 동작하도록 변경되었습니다.</p>
+<h2>요구 사항</h2>
+<p>
+이 명령문을 실행하려면 Python Essentials 및 STATS ADJUST WIDTHS
+확장 명령문이 필요합니다. STATS ADJUST WIDTHS 확장 명령문의 경우 SPSS Community 웹 사이트(www.ibm.com/developerworks/spssdevcentral)에서 다운로드할 수 있습니다.
+</p>
+</body>
+</html>

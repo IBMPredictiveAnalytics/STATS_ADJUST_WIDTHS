@@ -1,102 +1,66 @@
-#/***********************************************************************
-# * Licensed Materials - Property of IBM 
-# *
-# * IBM SPSS Products: Statistics Common
-# *
-# * (C) Copyright IBM Corp. 1989, 2014
-# *
-# * US Government Users Restricted Rights - Use, duplication or disclosure
-# * restricted by GSA ADP Schedule Contract with IBM Corp. 
-# ************************************************************************/
-
-# NLS_ENCODING=UTF-8
-# IBMUPYTH
-
-
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-21 17:51+China Standard Time\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-10-20 00:39-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Globalization Pipeline\n"
 
-
-#: STATS_ADJUST_WIDTHS.py:122
-msgid "The active dataset must have a dataset name in order to run this command"
+msgid ""
+"The active dataset must have a dataset name in order to run this command"
 msgstr ""
-"Le jeu de données actif doit comporter un nom de fichier pour pouvoir exécuter cette commande."
+"Le jeu de données actif doit comporter un nom de fichier pour pouvoir exécuter"
+" cette commande."
 
-#: STATS_ADJUST_WIDTHS.py:133
 msgid "Specified output directory is not a directory: %s"
-msgstr ""
-"Le répertoire de sortie spécifié n'est pas un répertoire : %s"
+msgstr "Le répertoire de sortie spécifié n'est pas un répertoire : %s"
 
-#: STATS_ADJUST_WIDTHS.py:145
 msgid "Type Conflicts"
-msgstr ""
-"Conflits de type"
+msgstr "Conflits de type"
 
-#: STATS_ADJUST_WIDTHS.py:146
 msgid "String-Numeric Type Conflicts"
-msgstr ""
-"Conflits de type Chaîne-Numérique"
+msgstr "Conflits de type Chaîne-Numérique"
 
-#: STATS_ADJUST_WIDTHS.py:147
 msgid "Only the first 20 errors are shown"
-msgstr ""
-"Seules les 20 premières erreurs sont affichées."
+msgstr "Seules les 20 premières erreurs sont affichées."
 
-#: STATS_ADJUST_WIDTHS.py:148
 msgid "Dataset or File Name"
-msgstr ""
-"Jeu de données ou nom de fichier"
+msgstr "Jeu de données ou nom de fichier"
 
-#: STATS_ADJUST_WIDTHS.py:149
 msgid "String Variables Numeric in a Previous File"
-msgstr ""
-"Variables de chaîne de type numérique dans un fichier précédent"
+msgstr "Variables de chaîne de type numérique dans un fichier précédent"
 
-#: STATS_ADJUST_WIDTHS.py:150
 msgid "Numeric Variables String in a Previous File"
-msgstr ""
-"Variables numériques de type chaîne dans un fichier précédent"
+msgstr "Variables numériques de type chaîne dans un fichier précédent"
 
-#: STATS_ADJUST_WIDTHS.py:306
-msgid "None of the specified variables were found in any of the specified files"
+msgid ""
+"None of the specified variables were found in any of the specified files"
 msgstr ""
 "Aucune des variables indiquées n'a été trouvée dans les fichiers spécifiés."
 
-#: STATS_ADJUST_WIDTHS.py:346
 msgid ""
-"Using the \"first\" method, a variable was found in a later file\n"
-"that is not present in the first file: %s"
+"Using the \"first\" method, a variable was found in a later file\nthat is not "
+"present in the first file: %s"
 msgstr ""
-"A l'aide de la méthode \"first\", une variable a été détectée dans un fichier ultérieur\n"
-"alors qu'elle était introuvable dans le premier fichier : %s"
+"A l'aide de la méthode \"first\", une variable a été détectée dans un fichier "
+"ultérieur\nalors qu'elle était introuvable dans le premier fichier : %s"
 
-#: STATS_ADJUST_WIDTHS.py:386
 msgid "File %s already exists and will not be overwritten."
-msgstr ""
-"Le fichier %s existe déjà et ne sera pas écrasé."
+msgstr "Le fichier %s existe déjà et ne sera pas écrasé."
 
-#: STATS_ADJUST_WIDTHS.py:433
 msgid "---"
-msgstr ""
-"---"
+msgstr "---"
 
-#: STATS_ADJUST_WIDTHS.py:485
 msgid "Adjust Widths"
-msgstr ""
-"Ajuster la largeur"
-
-
-
+msgstr "Ajuster la largeur"

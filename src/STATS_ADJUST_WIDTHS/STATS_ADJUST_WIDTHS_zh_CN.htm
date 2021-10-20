@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>调整变量宽度</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>跨文件调整字符串变量的宽度</h1>
+<p>
+合并包含字符串变量的文件时，匹配的变量必须具有相同的宽度。此过程跨文件或数据集的集合对宽度进行同步。
+</p>
+<p>此对话框对活动文件以及一个外部文件执行操作。通过使用语法，一次可以处理多个文件。</p>
+
+<p class="step"><span class="step-glyph"></span>要运行此过程，请从菜单中选择：</p>
+<p class="menuselection">&nbsp;数据<br>&nbsp;&nbsp;数据 > 调整变量宽度...</p>
+
+<p><span class="runinhead">要同步的文件</span> 请选择要与活动文件进行同步的文件。</p>
+<p class="bullet">&bull; 如果该文件已打开，那么会将其重新打开，而所有未保存的更改都将丢失。
+<p class="bullet">&bull; 要运行此命令，活动文件必须具有数据集名称。
+<p><span class="runinhead">要调整的变量</span> 请选择应调整宽度的字符串变量。</p>
+<p class="bullet">&bull; 选择的变量不必存在于每个文件中。
+<p><span class="runinhead">大小调整规则</span> 请选择如何调整宽度。此调整将针对每个变量分别进行。对于最大值，变量宽度将调整为变量的最宽实例，依此类推。如果您选择了“第一项”，那么目标宽度将是活动数据集中变量的宽度。
+<p class="bullet">&bull; 如果生成的字段过小，无法存放其所有的值，那么这些值将截断。
+<p><span class="runinhead">最大大小</span> 大小规则将受这个指定的最大值约束。
+<p><span class="runinhead">数据集名称的前缀</span> 打开文件时，将对其指定数据集名称，该名称由前缀和连续整数组成。
+<p class="bullet">&bull; 如果该数据集名称已在使用中，那么会将其重新分配给此文件，并关闭其他数据集。先前未保存的更改将丢失。
+<p>将使用 ALTER TYPE 命令来进行更改。在该命令的输出中，将报告受影响的变量。
+<h2>保存(V)</h2>
+缺省情况下，修改后的文件将保持打开，并且不会进行保存。为了方便您使用，“保存”子对话框提供了保存功能。</p>
+
+<p><span class="runinhead">如果进行了修改，那么调整后重新保存文件</span> 如果选中此框，那么将保存所处理的文件。</p>
+<p class="bullet">&bull; 除非在下面指定了目录，否则不会保存活动数据集。</p>
+<p class="bullet">&bull; 如果未修改文件，那么不会进行重新保存。</p>
+<p><span class="runinhead">覆盖现有文件</span> 如果选中此框，那么将使用更改后的版本覆盖现有文件。</p>
+<p><span class="runinhead">对文件名根追加后缀</span> 保存文件时，可以对文件名的根追加后缀。例如，指定 _adjusted 可能会产生文件名 mydata_adjusted.sav。</p>
+<p><span class="runinhead">保存后关闭文件</span> 如果选中此框，那么处理文件后会自动将其关闭。如果不同时保存文件，那么无法完成此任务；但是，永远不会保存活动文件。
+<p><span class="runinhead">将文件写入目录</span> 请选择应该将文件写入的目录。如果未指定任何内容，那么这些文件将保存在原先的位置中。
+<p class="bullet">&bull; 除非指定了目录，否则不会将活动文件保存到磁盘。如果保存文件，那么名称格式为
+dsname.sav，其中 dsname 是数据集名称。不会追加后缀。
+
+<h2>其他功能部件</h2>
+<p>
+通过使用语法，可以处理两个以上输入文件或数据集，并且无需包括活动文件。此命令还将仅处理单个文件。
+<p>如果指定了目录，并且最后一个级别不存在，那么此命令将创建该级别。
+<p>执行<br>
+<span class="code">STATS ADJUST WIDTHS /HELP</span><br>
+可以显示完整的语法。
+</p>
+<p>注：此命令的原始版本将重新保存文件，即使这些文件未经修改也是如此。尽管这在某些时候比较方便，但为了更好地处理数目庞大的文件，已更改此行为。</p>
+<h2>要求</h2>
+<p>
+此命令需要 Python Essentials 和 STATS ADJUST WIDTHS 扩展命令，您可以从
+SPSS Community Web 站点 (www.ibm.com/developerworks/spssdevcentral) 进行下载。
+</p>
+</body>
+</html>

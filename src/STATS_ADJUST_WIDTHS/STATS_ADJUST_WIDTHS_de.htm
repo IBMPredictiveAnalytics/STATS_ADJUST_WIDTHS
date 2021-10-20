@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Variablenbreiten anpassen</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Breiten von Zeichenfolgevariablen dateiübergreifend anpassen</h1>
+<p>
+Wenn Dateien zusammengeführt werden, die Zeichenfolgevariablen enthalten, müssen die übereinstimmenden Variablen
+dieselbe Breite aufweisen.  Mit dieser Prozedur werden die Breiten mehrerer
+Dateien oder Datasets synchronisiert.
+</p>
+<p>Das Dialogfeld greift auf die aktive Datei sowie auf eine externe Datei zu.  Mithilfe der Syntax
+kann eine ganze Reihe von Dateien gleichzeitig verarbeitet werden.</p>
+
+<p class="step"><span class="step-glyph">►</span>Wählen Sie zur Ausführung dieser Prozedur folgende Optionen aus den Menüs aus:</p>
+<p class="menuselection">&nbsp;Daten<br>&nbsp;&nbsp;Daten>Variablenbreiten anpassen...</p>
+
+<p><span class="runinhead">Zu synchronisierende Datei</span> Wählen Sie eine Datei aus, die mit der aktiven Datei synchronisiert werden soll.</p>
+<p class="bullet">&bull; Wenn die Datei bereits offen ist, wird sie erneut geöffnet, wobei alle nicht gespeicherten Änderungen verloren gehen.
+<p class="bullet">&bull; Damit dieser Befehl ausgeführt werden kann, muss die aktive Datei über einen Datasetnamen verfügen.
+<p><span class="runinhead">Anzupassende Variablen</span> Wählen Sie die (Zeichenfolge-) Variablen aus, deren Breiten angepasst werden sollen</p>
+<p class="bullet">&bull; Eine ausgewählte Variable muss nicht in jeder Datei vorhanden sein.
+<p><span class="runinhead">Größenanpassungsregel</span>  Wählen Sie aus, in welcher Weise
+die Breiten angepasst werden sollen.  Die Anpassung wird für jede Variable separat durchgeführt.  Die Variablenbreiten werden maximal an die breiteste Instanz der Variable angepasst etc.
+Bei Auswahl von 'Erste' wird die Zielbreite der der Variablen im aktiven Dataset entsprechen.
+<p class="bullet">&bull; Wenn das resultierende Feld zu klein ist, um alle vorliegenden Werte aufzunehmen, werden diese Werte abgeschnitten.
+
+<p><span class="runinhead">Maximale Größe</span> Die Größenregeln werden durch das hier angegebene Maximum beschränkt.
+<p><span class="runinhead">Präfix für Datasetnamen</span> Wenn eine Datei geöffnet wird,
+wird ihr ein Datasetname bestehend aus dem Präfix und einer sequenziellen ganzen Zahl zugewiesen.
+<p class="bullet">&bull; Wenn dieser Datasetname bereits verwendet wird, wird er dieser Datei neu zugewiesen.
+Das andere Dataset wird geschlossen.  Noch nicht gespeicherte Änderungen gehen dabei verloren.
+
+<p>Die Änderungen werden mit dem Befehl ALTER TYPE vorgenommen.  Davon betroffene Variablen
+werden in der Ausgabe dieses Befehls aufgelistet.
+
+<h2>Speichern</h2>
+Die geänderten Dateien bleiben standardmäßig geöffnet und ungespeichert.  Das Unterdialogfeld 'Speichern' bietet eine einfache Möglichkeit zum Speichern.</p>
+
+<p><span class="runinhead">Nach Anpassungen geänderte Dateien erneut speichern</span> Wählen Sie dieses Feld aus, wenn die verarbeiteten Dateien gespeichert werden sollen.</p>
+<p class="bullet">&bull; Damit das aktive Dataset gespeichert wird, muss unten ein Verzeichnis angegeben werden.</p>
+<p class="bullet">&bull; Wenn an der Datei keine Änderungen vorgenommen wurden, wird sie auch nicht erneut gespeichert.</p>
+<p><span class="runinhead">Vorhandene Datei überschreiben</span> Wählen Sie dieses Feld aus, wenn
+eine vorhandene Datei durch die geänderte Version überschrieben werden soll.</p>
+<p><span class="runinhead">Suffix an Dateinamensstamm anhängen</span>
+Wenn eine Datei gespeichert wird, kann ein Suffix an den Stamm des Dateinamens angehängt werden.
+Beispiel: Aus der Angabe '_angepasst' könnte der Dateiname 'meineDaten_angepasst.sav' gebildet werden</p>
+<p><span class="runinhead">Datei nach dem Speichern schließen</span> Wählen Sie dieses Feld aus,
+wenn die Datei nach ihrer Verarbeitung automatisch geschlossen werden soll.  Dies ist kontraproduktiv, wenn
+die Datei nicht außerdem noch gespeichert wird, wobei die aktive Datei jedoch nie geschlossen wird.
+<p><span class="runinhead">Dateien in Verzeichnis schreiben</span> Wählen Sie ein Verzeichnis aus,
+in das die Dateien geschrieben werden sollen.  Wenn keine Angabe gemacht wird, werden die Dateien an
+ihrem ursprünglichen Speicherort gespeichert.
+<p class="bullet">&bull; Damit die aktive Datei auf die Festplatte gespeichert wird, muss ein Verzeichnis angegeben werden.
+Beim Speichern erhält sie den Namen 'dsname.sav', wobei 'dsname' für den Datasetnamen steht.  Es wird kein Suffix angehängt.
+
+<h2>Weitere Funktionen</h2>
+<p>
+Mithilfe der Syntax können Sie mit mehr als zwei Eingabedateien oder Datasets arbeiten, wobei die aktive Datei nicht eingeschlossen werden muss.  Der Befehl funktioniert auch bei nur einer einzelnen Datei.
+<p>Wenn Sie ein Verzeichnis angeben, die letzte Ebene jedoch nicht vorhanden ist, wird sie von diesem Befehl erstellt.
+<p>Ausführen<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+Sie zeigen damit die vollständige Syntax an.
+</p>
+<p>Hinweis: Die ursprüngliche Version dieses Befehls speicherte auch dann Dateien erneut, wenn
+sie nicht geändert wurden.  Obwohl dieses Verhalten unter bestimmten Bedingungen komfortabel ist, wurde es zugunsten einer besseren Handhabbarkeit einer sehr großen Anzahl von Dateien geändert.</p>
+<h2>Anforderungen</h2>
+<p>
+Für diesen Befehl sind Python Essentials und der Erweiterungsbefehl STATS ADJUST WIDTHS
+von der SPSS Community-Website (www.ibm.com/developerworks/spssdevcentral) erforderlich.
+</p>
+</body>
+</html>

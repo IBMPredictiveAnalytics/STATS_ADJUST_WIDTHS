@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Adattare le larghezze delle variabili</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-size:110%; }
+BODY {font-size:80%; }
+TABLE {font-size:100%;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph {  }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px; }
+
+/* inline tags */
+.code {}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Adattare le larghezze delle variabili stringa nei file</h1>
+<p>
+Quando si uniscono i file che contengono le variabili stringa, le variabili corrispondenti devono avere la stessa larghezza.  Questa procedura sincronizza le larghezze in una raccolta di file o dataset.
+</p>
+<p>La finestra di dialogo opera nel file attivo più un file esterno.  Utilizzando la sintassi, è possibile elaborare molti file in una volta.</p>
+
+<p class="step"><span class="step-glyph">►</span>Per eseguire questa procedura, dai menu scegliere:</p>
+<p class="menuselection">&nbsp;Dati<br>&nbsp;&nbsp;Dati>Adatta larghezze variabile...</p>
+
+<p><span class="runinhead">File da sincronizzare</span> Selezionare un file da sincronizzare con il file attivo.</p>
+<p class="bullet">&bull; Se il file è già aperto, verrà riaperto e tutte le modifiche non salvate andranno perse.
+<p class="bullet">&bull; Il file attivo deve avere un nome dataset per eseguire questo comando.
+<p><span class="runinhead">Variabili da adattare</span> Selezionare le variabili (stringa) di cui devono essere regolate le larghezze</p>
+<p class="bullet">&bull; Una variabile selezionata deve comparire in ciascun file.
+<p><span class="runinhead">Regola di adattamento dimensione</span>  Scegliere il modo in cui le larghezze devono essere adattate.  L'adattamento viene effettuato separatamente per ogni variabile.  Per l'opzione Massimo,
+le larghezze delle variabili verranno adattate alla più ampia istanza della variabile, e così via.
+Se si sceglie Primo, la larghezza di destinazione sarà quella della variabile nel dataset attivo.
+<p class="bullet">&bull; Se il campo risultante è troppo piccolo per contenere tutti i valori, i valori verranno troncati.
+
+<p><span class="runinhead">Dimensione massima</span> Le regole di dimensione sono costruite in base a questa dimensione massima specificata.
+<p><span class="runinhead">Prefisso per i nomi dataset</span> Quando un file viene aperto, gli viene assegnato un nome dataset composto dal prefisso e un numero intero sequenziale.
+<p class="bullet">&bull; Se tale nome dataset è già in uso, viene riassegnato a questo file e l'altro dataset viene chiuso.  Le modifiche non precedentemente salvate vengono perse.
+
+<p>Il comando ALTER TYPE viene utilizzato per apportare le modifiche.  Le variabili interessate verranno notificate nell'output di tale comando.
+
+<h2>Salva</h2>
+Per impostazione predefinita, i file modificati vengono lasciati aperti e non salvati.  La finestra secondaria Salva, fornisce funzioni di salvataggio per comodità.</p>
+
+<p><span class="runinhead">Risalva file dopo adattamenti in caso di modifica </span> Selezionare questa casella per salvare i file elaborati.</p>
+<p class="bullet">&bull; Il dataset attivo non verrà salvato se non viene specificata una cartella di seguito.</p>
+<p class="bullet">&bull; Se il file non è stato modificato, non viene risalvato.</p>
+<p><span class="runinhead">Sovrascrivi file esistente</span> Selezionare questa casella per sovrascrivere un file esistente con la versione modificata.</p>
+<p><span class="runinhead">Accoda suffisso a radice nome file</span>
+Quando si salva un file, può essere aggiunto un suffisso alla radice del nome file, ad esempio, specificando _adattato si otterrà il nome file
+dati_adattato.sav</p>
+<p><span class="runinhead">Chiudi il file dopo il salvataggio</span> Selezionare questa casella per chiudere automaticamente il file dopo che è stato elaborato.  Questo è controproducente se il file non viene anche salvato, tuttavia il file attivo non viene mai chiuso.
+<p><span class="runinhead">Scrivi file nella cartella</span> Selezionare una cartella in cui i file devono essere scritti.  Se non è specificato nulla, i file vengono salvati nell'ubicazione originale.
+<p class="bullet">&bull; Il file attivo non viene salvato sul disco a meno che non venga specificata una cartella.
+Quando viene salvato, il nome ha il formato dsname.sav, dove dsname è il nome del dataset.  Non vie ne accodato alcun suffisso.
+
+<h2>Funzioni aggiuntive</h2>
+<p>
+Utilizzando la sintassi, è possibile lavorare con più di due file o dataset di input, senza  dover includere il file attivo.  Il comando funzionerà anche con un solo file.
+<p>Se si specifica una cartella, e l'ultimo livello non esiste, verrà creato da questo comando.
+<p>Eseguire<br>
+<span class="code">STATS ADJUST WIDTHS /HELP.</span><br>
+per visualizzare la sintassi completa.
+</p>
+<p>Nota: la versione originale di questo comando risalva i file anche se non sono stati modificati.  Nonostante talvolta conveniente, questo comportamento è stato modificato per migliorare le operazioni con un numero molto elevato di file.</p>
+<h2>Requisiti</h2>
+<p>
+Questo comando richiede Python Essentials e il comando di estensione STATS ADJUST WIDTHS
+presenti sul sito web SPSS Community (www.ibm.com/developerworks/spssdevcentral).
+</p>
+</body>
+</html>
