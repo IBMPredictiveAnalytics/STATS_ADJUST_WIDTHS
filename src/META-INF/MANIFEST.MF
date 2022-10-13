@@ -1,4 +1,5 @@
 Name: STATS ADJUST WIDTHS
+Display-Name: Adjust String Variables Widths
 Dialog-Specs: STATS_ADJUST_WIDTHS.spd
 Command-Specs: STATS_ADJUST_WIDTHS.xml
 Code-Files: STATS_ADJUST_WIDTHS.py
